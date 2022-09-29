@@ -64,7 +64,17 @@ world <- map_data("world") %>% filter(region != "Antarctica") %>% fortify
 base_map <- ggplot(data = world, mapping = aes(x = long, y = lat, group = group)) +
   geom_polygon(color = "grey80", fill = "wheat") +
   coord_quickmap() +
-  theme_void()
+  theme(text = element_text(family = "Roboto"),
+        plot.title = element_text(hjust = 1),
+        plot.title.position = "left",
+        plot.subtitle = element_text(hjust = 1))+
+  theme_void()+
+  labs(
+    title = "Cloud Data Centers by Vendor",
+    subtitle = "Opening year",
+    caption = "Data & Autor: Arantxa Herranz"
+  )
+
 
 base_map
 
